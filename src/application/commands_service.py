@@ -1,40 +1,51 @@
 from src.domain.messages.message import Message
+from src.domain.users.user import User
 
 def post(repo, user: str, message: str):
-    res = True
+    res = False
     print(f"[+] {user} user is posting: {message}.")
     
-    # TODO: Get user
-    message = Message(content = message, user_id = 1)
-    res = repo.insert_message(message= message.to_dict())
+    user = repo.get_user(username = user)
+    if user:
+        message = Message(content = message, user_id = user.id)
+        res = repo.insert_message(message= message.to_dict())
+        
     return res
 
 def read(repo, user: str):
     res = None
     print(f"[+] Reading {user}'s timeline")
     
-    # TODO: Get user from db or insert it
-    res = repo.get_messages(user_id = user.id)
+    user = repo.get_user(username = user)
+    if user:
+        res = repo.get_messages(user_ids = [user.id])
+        # TODO: print messages
+        
     return res
 
-def follow(user: str, follow: str):
-    rc = False
+def follow(repo, user: str, follow: str):
+    res = False
     print(f"[+] User {user} is following user {follow}.")
     
-    # TODO: 
-    # 1. Get the user
-    # 2. Get the follow user
-    # 3. Update the user follow list with the follow user id
-    # 4. Upsert the user
-    
-    return rc
+    user = repo.get_user(username = user)
+    follow_user = repo.get_user(username = follow)
+    if user and follow_user:
+        rc = user.add_follow(follow_user)
+        if rc:
+            res = repo.update_user(user = user.to_dict())
+            
+    return res
 
-def wall(user: str):
-    rc = True
+def wall(repo, user: str):
+    res = None
     print(f"[+] Reading user {user} wall.")
     
-    # TODO: 
-    # 1. Get the user
-    # 2. Get all the follow users
-    # 4. Get all messages posted by all the users id
-    return rc
+    user = repo.get_user(username = user)
+    if user:
+        ids = [user.id]
+        ids.extend(user.follows)
+        
+        res = repo.get_messages(user_ids = ids)
+        # TODO: print messages
+        
+    return res
