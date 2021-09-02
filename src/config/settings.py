@@ -22,4 +22,5 @@ MONGO_USER = config.get('mongodb', 'user')
 MONGO_PASSWORD = config.get('mongodb', 'passwd')
 MONGO_DB = config.get('mongodb', 'db')
 
-MESSAGES_COLLECTION = config.get('mongodb', 'messages_collection', fallback = '')
+MESSAGES_COLLECTION = config.get('mongodb', 'messages_collection')
+USERS_COLLECTION = config.get('mongodb', 'users_collection')

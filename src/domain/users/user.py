@@ -4,7 +4,7 @@ from dataclasses import dataclass, asdict, field
 @dataclass
 class User():
     
-    name: str
+    username: str
     id: uuid.UUID = field(default_factory=uuid.uuid4)
     follows: list = field(default_factory=list)
     
