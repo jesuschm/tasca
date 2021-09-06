@@ -31,72 +31,62 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]()
+![sample_screenshot](images/screenshot.png)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Sample project using Python 3.8 and MongoDB without frameworks based in Hexagonal architecture design.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages), meet people (following), "remember" your words (see your posts) or listen the environment (read your wall with all your messages along with your follow users messages).
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-
-
+* [Python 3.8](https://www.python.org/downloads/release/python-380/)
+* [MongoDB](https://www.mongodb.com/es)
+* [Docker](https://www.docker.com/)
+* [Docker compose](https://docs.docker.com/compose)
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+1. Clone the repo
+   ```sh
+   git clone https://github.com/jesuschmn/tasca.git
+   ```
+2. Export project path
+   ```sh
+   export PYTHONPATH=[project-path]/tasca/
+   cd [project-path]/tasca/
+   ```
+3. Docker compose
   ```sh
-  npm install npm@latest -g
+    docker-compose up -d
   ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-
+4. Create and activate the virtual environment (<a href="https://docs.python.org/3/using/index.html">info</a>)
+5. Install requirements
+  ```sh
+    pip install -r requirements.txt
+  ```
+6. Create users
+  ```sh
+  python src/scripts/createuser.py [username]
+  ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+You have 4 commands:
+1. Post messages.
+2. Follow another user.
+3. Read your messages.
+4. Read your wall.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
+## TODO
+1. Tests, tests and more tests (at least until the 80%)
+2. Actually you can follow yourself (it's ok you love yourself but if you follow yourself is like when you give a like to your photos).
+3. 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [@jchaconmontero](https://twitter.com/jchaconmontero) - jesuschaconmontero@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/jesuschm/tasca](https://github.com/jesuschm/tasca)
