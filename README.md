@@ -5,16 +5,12 @@
     <img src="images/logo.png" alt="Logo">
   </a>
 
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary>Table of Contents</summary>
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -23,8 +19,10 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li></a href="#usage">Usage</a></li>
-    <li></a href="#contact">Contact</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#requirements">Requirements</a></li>
+    <li><a href="#todo">TODO</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
@@ -37,15 +35,17 @@ Sample project using Python 3.8 and MongoDB without frameworks based in Hexagona
 
 A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages), meet people (following), "remember" your words (see your posts) or listen the environment (read your wall with all your messages along with your follow users messages).
 
-### Built With
+<!-- GETTING STARTED -->
+## Getting Started
+  
+### Prerequisites
 
 * [Python 3.8](https://www.python.org/downloads/release/python-380/)
 * [MongoDB](https://www.mongodb.com/es)
 * [Docker](https://www.docker.com/)
 * [Docker compose](https://docs.docker.com/compose)
 
-<!-- GETTING STARTED -->
-## Getting Started
+### Installation
 
 1. Clone the repo
    ```sh
@@ -71,7 +71,7 @@ A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages),
   ```
 
 <!-- USAGE EXAMPLES -->
-## Usage
+### Usage
 
 You have 4 commands:
 1. Post messages.
@@ -79,10 +79,10 @@ You have 4 commands:
 3. Read your messages.
 4. Read your wall.
 
+<!-- TODO -->
 ## TODO
 1. Tests, tests and more tests (at least until the 80%)
 2. Actually you can follow yourself (it's ok you love yourself but if you follow yourself is like when you give a like to your photos).
-3. 
 
 <!-- CONTACT -->
 ## Contact
