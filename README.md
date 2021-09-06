@@ -81,19 +81,19 @@ Enter the tasca first executing the main file
   
 You have 4 commands:
 1. Post messages.
-  ```sh
+  ```
   > [username] -> [message]
   ```
 2. Follow another user.
-  ```sh
+  ```
   > [username] -> [username]
   ```
 3. Read your messages.
-  ```sh
+  ```
   > [username]
   ```
 4. Read your wall.
-  ```sh
+  ```
   > [username] wall
   ```
 
