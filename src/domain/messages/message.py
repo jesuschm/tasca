@@ -19,9 +19,11 @@ class Message():
         return asdict(self)
     
     @classmethod
-    def print_messages(self, messages):
+    def print_messages(self, messages, usernames):
         
         for m in messages:
             message = Message.from_dict(m) # A way to validate the message 
             ago = timeago.format(message.created_at, datetime.now())
-            print(f"{message.content} ({ago})")
+            username = usernames.get(message.user_id, 'Unknown')
+            
+            print(f"{username} - {message.content} ({ago})")
