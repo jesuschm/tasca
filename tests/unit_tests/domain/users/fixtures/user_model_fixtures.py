@@ -5,11 +5,11 @@ from dataclasses import asdict, dataclass
 
 dummy_data = {
     'id': uuid.uuid4(),
-    'name': 'dummy_name',
+    'username': 'dummy_name',
     'follows': []
 }
 
 @pytest.fixture
 def dummy_user_instance_fixture():
-    dummy_user_instance_fixture = User(id = dummy_data.get('id'), name= dummy_data.get('name'))
+    dummy_user_instance_fixture = User(id = dummy_data.get('id'), username= dummy_data.get('username'))
     return dummy_user_instance_fixture
