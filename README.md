@@ -29,7 +29,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/tasca_logo.png" alt="Logo">
+    <img src="images/tasca_logo_v2.png" alt="Logo">
   </a>
 
   <h3 align="center">Best-README-Template</h3>
