@@ -53,7 +53,8 @@ def wall(repo, username: str):
     user = User.from_dict(repo.get_user(username = username))
     if user:
         ids = [user.id]
-        ids.extend(user.follows)
+        if user.follows and isinstance(user.follows, list):
+            ids.extend(user.follows)
         
         res = repo.get_messages(user_ids = ids)
         Message.print_messages(res)
