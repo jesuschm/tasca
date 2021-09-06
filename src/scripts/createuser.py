@@ -1,3 +1,4 @@
+import logging
 import argparse
 from src.application.users_service import create_user
 from src.infra.databases.mongo import MongoRepository
@@ -18,7 +19,7 @@ def main():
         create_user(repo = _repo, username = args.user)
         
     except Exception as err:
-        print("[-] Unexpected error: {}".format(err))
+        logging.error("[-] Unexpected error: {}".format(err))
     
 if __name__ == "__main__":
     """Entry point
