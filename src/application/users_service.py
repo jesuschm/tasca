@@ -1,8 +1,9 @@
+import logging 
 from src.domain.users.user import User
 
 def create_user(repo, username):
     res = False
-    print(f"[+] Creating the user {username}")
+    logging.debug(f"[+] Creating the user {username}")
     
     user = User(username=username)
     if user:
