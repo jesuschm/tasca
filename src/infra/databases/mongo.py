@@ -1,3 +1,4 @@
+import logging
 from pymongo import MongoClient
 from src.config.settings import MONGO_HOST, MONGO_PORT, MONGO_USER, MONGO_PASSWORD, MONGO_DB, MESSAGES_COLLECTION, USERS_COLLECTION
 from .repo import Repo
@@ -13,14 +14,14 @@ class MongoRepository(Repo):
                 uri += f"{user}:{password}@"
             uri += f"{host}:{port}/?authSource={db}"
             
-            print ("[+] Connecting with the database...")
+            logging.debug("[+] Connecting with the database...")
             # uuidRepresentation = 'standard' helps mongo to manage uuid4 correctly.
             client = MongoClient(uuidRepresentation='standard') 
             client[db].command('ping')
-            print ("[+] Successfully connected to the database.")
+            logging.debug("[+] Successfully connected to the database.")
             return client
         except Exception:
-            print(f'[-] Cannot instance connection with db.')
+            logging.error(f'[-] Cannot instance connection with db.')
             return None
     
     def upsert(self, collection, data, pk_field):
@@ -35,16 +36,16 @@ class MongoRepository(Repo):
 
         """
         
-        print('[+] Inserting/Updating data into %s collection.', collection)
+        logging.debug('[+] Inserting/Updating data into %s collection.', collection)
         res = None
 
         try:
             res = self.client[MONGO_DB][collection].update({pk_field: data[pk_field]}, data, upsert=True)
             nUpserted= res['n']
-            print(f'[+] Upserted {nUpserted} records in db.')
+            logging.debug(f'[+] Upserted {nUpserted} records in db.')
             res =  (nUpserted == 1)
         except Exception as err:
-            print(f'[-] db_upsert: Cannot upsert data in db: {collection}. Error {err}.')
+            logging.error(f'[-] db_upsert: Cannot upsert data in db: {collection}. Error {err}.')
             
         return res
     
@@ -80,7 +81,7 @@ class MongoRepository(Repo):
                 res = self.client[MONGO_DB][collection].find_one(filter, {"_id": 0})
                 
         except Exception as err:
-            print(f'[-] db_get: Cannot get data in db. Collection: {str(collection)} Filter: {str(filter)}')
+            logging.error(f'[-] db_get: Cannot get data in db. Collection: {str(collection)} Filter: {str(filter)}')
 
         return res
 
@@ -108,4 +109,10 @@ class MongoRepository(Repo):
         filter = {
             'username': username
         }
+        return self.get(collection= USERS_COLLECTION, filter = filter)
+
+    def get_user_by_id(self, user_id):
+        filter = {
+            'id': user_id
+        }        
         return self.get(collection= USERS_COLLECTION, filter = filter)
