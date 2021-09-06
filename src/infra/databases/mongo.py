@@ -92,6 +92,10 @@ class MongoRepository(Repo):
     
     # Users db actions
     def create_user(self, user):
+        return self._upsert_user(user)
+    def update_user(self, user):
+        return self._upsert_user(user)
+    def _upsert_user(self, user):
         return self.upsert(collection= USERS_COLLECTION, data = user, pk_field = 'id')
     
     def get_user(self, username):
