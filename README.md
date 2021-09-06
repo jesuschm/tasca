@@ -63,7 +63,7 @@ A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages),
 4. Create and activate the virtual environment (<a href="https://docs.python.org/3/using/index.html">info</a>)
 5. Install requirements
   ```sh
-    pip install -r src/requirements.txt
+    pip install -r requirements.txt
   ```
 6. Create users
   ```sh
