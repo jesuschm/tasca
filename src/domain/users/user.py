@@ -10,7 +10,10 @@ class User():
     
     @classmethod
     def from_dict(self, d):
-        return self(**d)
+        return self(**d) if isinstance(d, dict) else None
     
     def to_dict(self):
         return asdict(self)
+    
+    def add_follow(self, follow_user_id):
+        self.follows.append(follow_user_id)
