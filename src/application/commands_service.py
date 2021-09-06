@@ -1,52 +1,64 @@
 from src.domain.messages.message import Message
 from src.domain.users.user import User
+from src.domain.messages.message import Message
 
-def post(repo, user: str, message: str):
+def post(repo, username: str, message: str):
     res = False
-    print(f"[+] {user} user is posting: {message}.")
+    print(f"[+] {username} user is posting: {message}.")
     
-    user = repo.get_user(username = user)
+    user = User.from_dict(repo.get_user(username = username))
     if user:
         message = Message(content = message, user_id = user.id)
         res = repo.insert_message(message= message.to_dict())
+    else:
+        raise Exception(f"{username} user not found")
         
     return res
 
-def read(repo, user: str):
+def read(repo, username: str):
     res = None
-    print(f"[+] Reading {user}'s timeline")
+    print(f"[+] Reading {username}'s timeline")
     
-    user = repo.get_user(username = user)
+    user = User.from_dict(repo.get_user(username = username))
     if user:
         res = repo.get_messages(user_ids = [user.id])
-        # TODO: print messages
         
+        Message.print_messages(res)
+    else:
+        raise Exception(f"{username} user not found")
+    
     return res
 
-def follow(repo, user: str, follow: str):
+def follow(repo, username: str, follow_username: str):
     res = False
-    print(f"[+] User {user} is following user {follow}.")
+    print(f"[+] User {username} wants to follow user {follow_username}.")
     
-    user = repo.get_user(username = user)
-    follow_user = repo.get_user(username = follow)
-    if user and follow_user:
-        rc = user.add_follow(follow_user)
-        if rc:
+    user = User.from_dict(repo.get_user(username = username))
+    follow_user = User.from_dict(repo.get_user(username = follow_username))
+    if user:
+        if follow_user:
+            user.add_follow(follow_user.id)
             res = repo.update_user(user = user.to_dict())
+        else:
+            raise Exception(f"{follow_username} user to follow not found")
+    else:
+        raise Exception(f"{username} user not found")
             
     return res
 
-def wall(repo, user: str):
+def wall(repo, username: str):
     res = None
-    print(f"[+] Reading user {user} wall.")
+    print(f"[+] Reading user {username} wall.")
     
-    user = repo.get_user(username = user)
+    user = User.from_dict(repo.get_user(username = username))
     if user:
         ids = [user.id]
         if user.follows and isinstance(user.follows, list):
             ids.extend(user.follows)
         
         res = repo.get_messages(user_ids = ids)
-        # TODO: print messages
+        Message.print_messages(res)
+    else:
+        raise Exception(f"{username} user not found")
         
     return res

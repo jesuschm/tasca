@@ -1,6 +1,6 @@
 from datetime import datetime
 import uuid
-from datetime import datetime
+import timeago
 from dataclasses import dataclass, asdict, field
 
 @dataclass
@@ -17,3 +17,11 @@ class Message():
     
     def to_dict(self):
         return asdict(self)
+    
+    @classmethod
+    def print_messages(self, messages):
+        
+        for m in messages:
+            message = Message.from_dict(m) # A way to validate the message 
+            ago = timeago.format(message.created_at, datetime.now())
+            print(f"{message.content} ({ago})")

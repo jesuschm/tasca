@@ -88,7 +88,12 @@ class MongoRepository(Repo):
     def insert_message(self, message):
         return self.upsert(collection = MESSAGES_COLLECTION, data = message, pk_field = 'id')
     
-    def get_messages(self, message):
+    def get_messages(self, user_ids):
+        filter = { 
+            'user_id' : { 
+                '$in' : user_ids 
+            } 
+        }
         return self.get(collection= MESSAGES_COLLECTION, filter = filter, many = True, order_by = 'created_at', mode = 'desc')
     
     # Users db actions
