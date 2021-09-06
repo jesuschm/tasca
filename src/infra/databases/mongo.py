@@ -14,7 +14,8 @@ class MongoRepository(Repo):
             uri += f"{host}:{port}/?authSource={db}"
             
             print ("[+] Connecting with the database...")
-            client = MongoClient()
+            # uuidRepresentation = 'standard' helps mongo to manage uuid4 correctly.
+            client = MongoClient(uuidRepresentation='standard') 
             client[db].command('ping')
             print ("[+] Successfully connected to the database.")
             return client
