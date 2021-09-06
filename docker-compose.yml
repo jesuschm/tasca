@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    image: mongo:latest
+    container_name: "tasca-mongo-container"
+    environment:
+      MONGO_INITDB_DATABASE: tascadb
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodbdata:/data/db
+
+volumes:
+  mongodbdata:
