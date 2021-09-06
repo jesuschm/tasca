@@ -1,18 +1,6 @@
-import pytest
-from uuid import uuid4
-import mock
 from src.application.commands_service import post, read, follow, wall
-from src.domain.users.user import User
-from src.domain.messages.message import Message
+from .fixtures.commands_service_fixtures import mocked_mongo_repo
 
-@pytest.fixture
-def mocked_mongo_repo():
-    mocked_repo = mock.Mock()
-    mocked_repo.insert_message.return_value = True
-    mocked_repo.get_messages.return_value = [Message(content = 'dummy_message', user_id = uuid4()).to_dict()]
-    mocked_repo.get_user.return_value = User(username = 'dummy_user').to_dict()
-    return mocked_repo
-    
 class TestCommandsService(object):
     def test_001_post(self, mocked_mongo_repo):
         rc = post(repo = mocked_mongo_repo, username = 'dummy_user', message = 'dummy_message')
