@@ -49,7 +49,7 @@ A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages),
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/jesuschmn/tasca.git
+   git clone https://github.com/jesuschm/tasca.git
    ```
 2. Export project path
    ```sh
