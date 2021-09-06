@@ -49,7 +49,7 @@ A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages),
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/jesuschmn/tasca.git
+   git clone https://github.com/jesuschm/tasca.git
    ```
 2. Export project path
    ```sh
@@ -58,12 +58,12 @@ A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages),
    ```
 3. Docker compose
   ```sh
-    docker-compose up -d
+    docker-compose up --build -d
   ```
 4. Create and activate the virtual environment (<a href="https://docs.python.org/3/using/index.html">info</a>)
 5. Install requirements
   ```sh
-    pip install -r requirements.txt
+    pip install -r src/requirements.txt
   ```
 6. Create users
   ```sh
@@ -73,6 +73,12 @@ A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages),
 <!-- USAGE EXAMPLES -->
 ### Usage
 
+Enter the tasca first executing the main file
+  
+  ```sh
+  python src/tasca.py
+  ```
+  
 You have 4 commands:
 1. Post messages.
 2. Follow another user.
