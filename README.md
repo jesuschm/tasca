@@ -86,7 +86,7 @@ You have 4 commands:
   ```
 2. Follow another user.
   ```
-  > [username] -> [username]
+  > [username] follow [username]
   ```
 3. Read your messages.
   ```
