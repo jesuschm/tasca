@@ -58,7 +58,7 @@ A Tasca is a typical Spanish bar. Like in a Tasca, you can talk (post messages),
    ```
 3. Docker compose
   ```sh
-    docker-compose up -d
+    docker-compose up --build -d
   ```
 4. Create and activate the virtual environment (<a href="https://docs.python.org/3/using/index.html">info</a>)
 5. Install requirements
